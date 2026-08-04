@@ -1,14 +1,13 @@
 apiVersion: build.openshift.io/v1
 kind: BuildConfig
-
 metadata:
   name: order-management-build
 
 spec:
+  runPolicy: Serial
+
   source:
-    type: Git
-    git:
-      uri: https://github.com/cnkiddlin/order-management.git
+    type: Binary
 
   strategy:
     type: Docker
@@ -19,7 +18,3 @@ spec:
     to:
       kind: ImageStreamTag
       name: order-management:latest
-
-  triggers:
-  - type: ImageChange
-  - type: ConfigChange

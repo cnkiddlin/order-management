@@ -1,0 +1,37 @@
+apiVersion: tekton.dev/v1
+kind: PipelineRun
+
+metadata:
+  generateName: order-management-
+
+spec:
+
+  serviceAccountName: pipeline
+
+  pipelineRef:
+    name: order-management-ci
+
+  params:
+
+    - name: git-url
+      value: https://github.com/cnkiddlin/order-management.git
+
+    - name: revision
+      value: main
+
+  workspaces:
+
+    - name: source
+
+      volumeClaimTemplate:
+
+        spec:
+
+          accessModes:
+            - ReadWriteOnce
+
+          resources:
+
+            requests:
+
+              storage: 2Gi

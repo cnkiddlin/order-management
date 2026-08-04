@@ -1,0 +1,27 @@
+apiVersion: tekton.dev/v1
+kind: Task
+
+metadata:
+  name: unittest
+
+spec:
+
+  workspaces:
+    - name: source
+
+  steps:
+    - name: test
+
+      image: python:3.11
+
+      workingDir: $(workspaces.source.path)
+
+      script: |
+        #!/usr/bin/env bash
+        set -eux
+
+        python -m pip install --upgrade pip
+        
+        python -m pip install -r requirements.txt
+
+        python -m unittest discover -s tests -v

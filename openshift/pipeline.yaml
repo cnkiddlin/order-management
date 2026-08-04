@@ -1,0 +1,93 @@
+apiVersion: tekton.dev/v1
+kind: Pipeline
+
+metadata:
+  name: order-management-ci
+
+spec:
+
+  params:
+
+    - name: git-url
+      type: string
+
+    - name: revision
+      type: string
+
+  workspaces:
+
+    - name: source
+
+  tasks:
+
+    #
+    # Clone
+    #
+    - name: clone
+
+      taskRef:
+        name: git-clone
+
+      params:
+
+        - name: URL
+          value: $(params.git-url)
+
+        - name: REVISION
+          value: $(params.revision)
+
+        - name: DELETE_EXISTING
+          value: "true"
+
+      workspaces:
+
+        - name: output
+          workspace: source
+
+    #
+    # Test
+    #
+    - name: unittest
+
+      runAfter:
+        - clone
+
+      taskRef:
+        name: unittest
+
+      workspaces:
+
+        - name: source
+          workspace: source
+
+    #
+    # Build
+    #
+    - name: build
+
+      runAfter:
+        - unittest
+
+      taskSpec:
+
+        workspaces:
+          - name: source
+
+        steps:
+
+          - name: build
+
+            image: registry.redhat.io/openshift4/ose-cli-rhel9
+
+            workingDir: $(workspaces.source.path)
+
+            script: |
+              oc start-build order-management-build \
+                --from-dir=. \
+                --follow \
+                --wait
+
+      workspaces:
+
+        - name: source
+          workspace: source
