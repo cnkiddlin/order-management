@@ -1,0 +1,25 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+
+metadata:
+  name: order-management-build
+
+spec:
+  source:
+    type: Git
+    git:
+      uri: https://github.com/cnkiddlin/order-management.git
+
+  strategy:
+    type: Docker
+    dockerStrategy:
+      dockerfilePath: Dockerfile
+
+  output:
+    to:
+      kind: ImageStreamTag
+      name: order-management:latest
+
+  triggers:
+  - type: ImageChange
+  - type: ConfigChange
