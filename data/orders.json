@@ -1,0 +1,143 @@
+[
+  {
+    "order_id": "ORD-20260801-001",
+    "customer": {
+      "name": "张明",
+      "phone": "138-0001-1234",
+      "email": "zhangming@example.com"
+    },
+    "items": [
+      { "name": "AirPods Pro 2", "sku": "APP-002", "quantity": 1, "price": 1899.00 },
+      { "name": "硅胶保护壳", "sku": "APP-Case", "quantity": 1, "price": 199.00 }
+    ],
+    "shipping": {
+      "address": "北京市朝阳区建国路88号 SOHO 现代城 A座 1601",
+      "method": "顺丰速运",
+      "tracking_no": "SF1234567890"
+    },
+    "status": "已发货",
+    "payment_method": "微信支付",
+    "total": 2098.00,
+    "created_at": "2026-08-01 10:23:00",
+    "updated_at": "2026-08-02 09:15:00",
+    "timeline": [
+      { "time": "2026-08-01 10:23", "event": "订单创建" },
+      { "time": "2026-08-01 10:25", "event": "支付成功" },
+      { "time": "2026-08-01 14:00", "event": "仓库拣货" },
+      { "time": "2026-08-02 08:00", "event": "已发货" }
+    ]
+  },
+  {
+    "order_id": "ORD-20260802-014",
+    "customer": {
+      "name": "李华",
+      "phone": "139-0002-5678",
+      "email": "lihua@example.com"
+    },
+    "items": [
+      { "name": "MacBook Pro 14 M4", "sku": "MBP-14-M4", "quantity": 1, "price": 14999.00 },
+      { "name": "USB-C 多功能扩展坞", "sku": "ACC-HUB-01", "quantity": 1, "price": 399.00 },
+      { "name": "Magic Mouse", "sku": "MM-USB-C", "quantity": 1, "price": 799.00 }
+    ],
+    "shipping": {
+      "address": "上海市浦东新区陆家嘴环路1000号 汇丰大厦 25层",
+      "method": "京东物流",
+      "tracking_no": "JD0099887766"
+    },
+    "status": "处理中",
+    "payment_method": "信用卡",
+    "total": 16197.00,
+    "created_at": "2026-08-02 16:45:00",
+    "updated_at": "2026-08-02 16:45:00",
+    "timeline": [
+      { "time": "2026-08-02 16:45", "event": "订单创建" },
+      { "time": "2026-08-02 16:48", "event": "支付成功" },
+      { "time": "2026-08-02 17:10", "event": "仓库拣货" }
+    ]
+  },
+  {
+    "order_id": "ORD-20260730-007",
+    "customer": {
+      "name": "王芳",
+      "phone": "137-0033-9012",
+      "email": "wangfang@example.com"
+    },
+    "items": [
+      { "name": "iPhone 16 Pro Max 256G", "sku": "IP16PM-256", "quantity": 1, "price": 9999.00 },
+      { "name": "MagSafe 磁吸充电器", "sku": "ACC-MAG-15", "quantity": 2, "price": 329.00 }
+    ],
+    "shipping": {
+      "address": "广州市天河区天河路208号粤海天河城大厦12层",
+      "method": "顺丰速运",
+      "tracking_no": "SF5566778899"
+    },
+    "status": "已完成",
+    "payment_method": "支付宝",
+    "total": 10657.00,
+    "created_at": "2026-07-30 08:00:00",
+    "updated_at": "2026-08-01 18:00:00",
+    "timeline": [
+      { "time": "2026-07-30 08:00", "event": "订单创建" },
+      { "time": "2026-07-30 08:02", "event": "支付成功" },
+      { "time": "2026-07-30 11:00", "event": "仓库拣货" },
+      { "time": "2026-07-30 18:30", "event": "已发货" },
+      { "time": "2026-08-01 14:25", "event": "确认收货" },
+      { "time": "2026-08-01 18:00", "event": "订单完成" }
+    ]
+  },
+  {
+    "order_id": "ORD-20260803-021",
+    "customer": {
+      "name": "赵雪",
+      "phone": "136-0044-3456",
+      "email": "zhaoxue@example.com"
+    },
+    "items": [
+      { "name": "iPad Pro 11 M4 256G", "sku": "IPP-11-M4-256", "quantity": 1, "price": 8999.00 },
+      { "name": "Apple Pencil Pro", "sku": "APP-PRO", "quantity": 1, "price": 949.00 },
+      { "name": "Magic Keyboard", "sku": "MK-11", "quantity": 1, "price": 2399.00 }
+    ],
+    "shipping": {
+      "address": "深圳市南山区科技园南区深南大道9988号",
+      "method": "顺丰速运",
+      "tracking_no": "SF7766554433"
+    },
+    "status": "已发货",
+    "payment_method": "Apple Pay",
+    "total": 12347.00,
+    "created_at": "2026-08-03 09:30:00",
+    "updated_at": "2026-08-03 14:00:00",
+    "timeline": [
+      { "time": "2026-08-03 09:30", "event": "订单创建" },
+      { "time": "2026-08-03 09:35", "event": "支付成功" },
+      { "time": "2026-08-03 12:00", "event": "仓库拣货" },
+      { "time": "2026-08-03 14:00", "event": "已发货" }
+    ]
+  },
+  {
+    "order_id": "ORD-20260804-003",
+    "customer": {
+      "name": "刘洋",
+      "phone": "135-0055-7890",
+      "email": "liuyang@example.com"
+    },
+    "items": [
+      { "name": "Apple Watch Series 10 45mm", "sku": "AW-S10-45", "quantity": 1, "price": 3199.00 },
+      { "name": "编织回环表带", "sku": "AW-STR-BR", "quantity": 2, "price": 379.00 }
+    ],
+    "shipping": {
+      "address": "成都市锦江区红星路三段1号IFS国际金融中心",
+      "method": "中通快递",
+      "tracking_no": "ZTO3344556677"
+    },
+    "status": "待付款",
+    "payment_method": "——",
+    "total": 3957.00,
+    "created_at": "2026-08-04 08:15:00",
+    "updated_at": "2026-08-04 08:15:00",
+    "timeline": [
+      { "time": "2026-08-04 08:15", "event": "订单创建" },
+      { "time": "2026-08-04 08:15", "event": "等待付款" }
+    ]
+  }
+]

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>订单查询系统</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="bg-decoration">
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+  </div>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 11l3 3L22 4"/>
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+          </svg>
+        </div>
+        <span class="brand-name">订单查询</span>
+      </div>
+      <div class="user-icon" title="用户">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <!-- Search Section -->
+    <section class="search-section">
+      <div class="search-card">
+        <p class="search-subtitle">输入订单编号，查看订单详情</p>
+        <div class="search-bar">
+          <div class="search-input-wrap">
+            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="m21 21-4.3-4.3"/>
+            </svg>
+            <input id="orderInput" type="text" placeholder="例如 ORD-20260801-001" list="orderList" autocomplete="off">
+            <datalist id="orderList"></datalist>
+            <button id="searchBtn" class="search-btn">查询</button>
+          </div>
+        </div>
+        <div class="search-hint" id="searchHint"></div>
+      </div>
+    </section>
+
+    <!-- Order Detail Section (hidden initially) -->
+    <section class="order-detail" id="orderDetail" style="display:none;">
+      <!-- Order Summary Bar -->
+      <div class="order-summary">
+        <div class="order-id">
+          <span class="label">订单编号</span>
+          <span class="value" id="orderId"></span>
+        </div>
+        <div class="order-meta">
+          <div class="meta-item">
+            <span class="label">下单时间</span>
+            <span class="value" id="orderCreated"></span>
+          </div>
+          <div class="meta-item">
+            <span class="label">更新时间</span>
+            <span class="value" id="orderUpdated"></span>
+          </div>
+          <div class="meta-item">
+            <span class="label">订单状态</span>
+            <span class="status-badge" id="orderStatus"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Grid -->
+      <div class="detail-grid">
+        <!-- Items -->
+        <div class="detail-card items-card">
+          <div class="card-header">
+            <h3>商品明细</h3>
+          </div>
+          <div class="card-body" id="orderItems"></div>
+          <div class="card-footer">
+            <div class="total-row">
+              <span>商品总数</span>
+              <span id="totalQty"></span>
+            </div>
+            <div class="total-row highlight">
+              <span>订单总额</span>
+              <span id="totalAmount"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Customer Info -->
+        <div class="detail-card">
+          <div class="card-header">
+            <h3>客户信息</h3>
+          </div>
+          <div class="card-body">
+            <div class="info-row">
+              <span class="info-label">姓名</span>
+              <span class="info-value" id="customerName"></span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">电话</span>
+              <span class="info-value" id="customerPhone"></span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">邮箱</span>
+              <span class="info-value" id="customerEmail"></span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">支付方式</span>
+              <span class="info-value" id="paymentMethod"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shipping Info -->
+        <div class="detail-card">
+          <div class="card-header">
+            <h3>物流信息</h3>
+          </div>
+          <div class="card-body">
+            <div class="info-row">
+              <span class="info-label">收货地址</span>
+              <span class="info-value addr" id="shippingAddress"></span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">快递方式</span>
+              <span class="info-value" id="shippingMethod"></span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">运单号</span>
+              <span class="info-value mono" id="trackingNo"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="detail-card timeline-card">
+          <div class="card-header">
+            <h3>订单轨迹</h3>
+          </div>
+          <div class="card-body">
+            <div class="timeline" id="timeline"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Empty State (visible before search) -->
+    <section class="empty-state" id="emptyState">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      </svg>
+      <p>输入订单编号开始查询</p>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
