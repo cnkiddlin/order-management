@@ -9,4 +9,4 @@ spec:
       value: $(body.repository.clone_url)
 
     - name: revision
-      value: main
+      value: $(body.after)
