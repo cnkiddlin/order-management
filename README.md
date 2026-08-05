@@ -47,11 +47,26 @@ podman run -d --network order-net -p 8080:8080 \
 两个服务在 OpenShift 上分别使用独立的 Deployment：
 
 - `order-management`：提供 UI 和查询接口，通过 Route 对外访问
-- `order-notification`：催办通知服务，只创建 ClusterIP Service，不对外暴露
+- `order-notification`：催办通知服务，默认只创建 ClusterIP Service，也提供了
+  可选的 Route，仅在需要外部访问时部署
 
-部署清单见两个项目各自的 `openshift/deployment.yaml`。先部署
-`order-notification`，再部署 `order-management`。`order-management`
-通过环境变量调用催办服务，同一项目（namespace）内使用：
+部署清单见两个项目各自的：
+
+- `openshift/deployment.yaml`
+- `openshift/service.yaml`
+- `openshift/route.yaml`
+
+部署前先把 `deployment.yaml` 中镜像地址的 `<namespace>` 替换为实际的
+OpenShift 项目名，然后先部署 `order-notification`，再部署
+`order-management`：
+
+```bash
+oc apply -f openshift/deployment.yaml -f openshift/service.yaml
+# notification 的 Route 仅在需要外部访问时部署
+oc apply -f openshift/route.yaml
+```
+
+`order-management` 通过环境变量调用催办服务，同一项目（namespace）内使用：
 
 ```yaml
 env:
