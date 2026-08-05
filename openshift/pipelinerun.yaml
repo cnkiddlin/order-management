@@ -19,6 +19,9 @@ spec:
     - name: revision
       value: main
 
+    - name: image
+      value: image-registry.openshift-image-registry.svc:5000/order-app/order-management
+
   workspaces:
 
     - name: source

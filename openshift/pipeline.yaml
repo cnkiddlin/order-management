@@ -7,12 +7,15 @@ metadata:
 spec:
 
   params:
-
     - name: git-url
       type: string
 
     - name: revision
       type: string
+
+    - name: image
+      type: string
+      default: image-registry.openshift-image-registry.svc:5000/order-app/order-management
 
   workspaces:
 
@@ -59,33 +62,48 @@ spec:
 
         - name: source
           workspace: source
-
-    #
-    # Build
-    #
-    - name: build
+    - name: build-image
 
       runAfter:
         - unittest
 
-      taskSpec:
+      taskRef:
+        name: buildah
 
-        workspaces:
-          - name: source
+      params:
 
-        steps:
+        - name: IMAGE
+          value: "$(params.image):$(params.revision)"
 
-          - name: build
+        - name: DOCKERFILE
+          value: "./Dockerfile"
 
-            image: registry.redhat.io/openshift4/ose-cli-rhel9
+        - name: CONTEXT
+          value: "."
 
-            workingDir: $(workspaces.source.path)
+        - name: STORAGE_DRIVER
+          value: "vfs"
 
-            script: |
-              oc start-build order-management-build \
-                --from-dir=. \
-                --follow \
-                --wait
+        - name: FORMAT
+          value: "docker"
+
+        - name: TLS_VERIFY
+          value: "false"
+
+        - name: SKIP_PUSH
+          value: "false"
+
+        - name: BUILD_ARGS
+          value: [ ]
+
+        - name: BUILD_EXTRA_ARGS
+          value: ""
+
+        - name: PUSH_EXTRA_ARGS
+          value: ""
+
+        - name: VERBOSE
+          value: "true"
 
       workspaces:
 

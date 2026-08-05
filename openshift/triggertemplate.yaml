@@ -7,6 +7,8 @@ spec:
   params:
     - name: git-url
     - name: revision
+    - name: image
+      default: image-registry.openshift-image-registry.svc:5000/order-app/order-management
 
   resourcetemplates:
 
@@ -14,7 +16,7 @@ spec:
       kind: PipelineRun
 
       metadata:
-        generateName: order-management
+        generateName: order-management-
 
       spec:
         pipelineRef:
@@ -29,6 +31,9 @@ spec:
 
           - name: revision
             value: $(tt.params.revision)
+
+          - name: image
+            value: $(tt.params.image)
 
         workspaces:
           - name: source
