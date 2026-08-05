@@ -8,7 +8,7 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, PROJECT_ROOT)
 
 import app as app_module
-from app import app, find_order, load_orders
+from app import HANDLERS, app, find_order, load_orders
 
 
 class LoadOrdersTestCase(unittest.TestCase):
@@ -78,6 +78,83 @@ class FlaskApiTestCase(unittest.TestCase):
         for item in payload["data"]:
             self.assertIn("order_id", item)
             self.assertIn("status", item)
+
+
+class ReminderApiTestCase(unittest.TestCase):
+    def setUp(self):
+        app.config["TESTING"] = True
+        self.client = app.test_client()
+
+    def test_api_handlers(self):
+        response = self.client.get("/api/handlers")
+        self.assertEqual(response.status_code, 200)
+        payload = response.get_json()
+        self.assertTrue(payload["success"])
+        self.assertEqual(payload["data"], HANDLERS)
+
+    def test_api_send_reminder_success(self):
+        with mock.patch.object(
+            app_module,
+            "send_reminder",
+            return_value=({"success": True, "result": "ok"}, 200),
+        ):
+            response = self.client.post(
+                "/api/reminders",
+                json={"order_id": "ORD-20260801-001", "handler": "王芳"},
+            )
+        self.assertEqual(response.status_code, 200)
+        payload = response.get_json()
+        self.assertTrue(payload["success"])
+        self.assertEqual(payload["data"]["result"], "ok")
+
+    def test_api_send_reminder_requires_fields(self):
+        response = self.client.post("/api/reminders", json={"order_id": "ORD-1"})
+        self.assertEqual(response.status_code, 400)
+        self.assertFalse(response.get_json()["success"])
+
+    def test_api_send_reminder_unknown_order(self):
+        response = self.client.post(
+            "/api/reminders",
+            json={"order_id": "ORD-NOT-EXISTS", "handler": "王芳"},
+        )
+        self.assertEqual(response.status_code, 404)
+        self.assertFalse(response.get_json()["success"])
+
+    def test_api_send_reminder_invalid_handler(self):
+        response = self.client.post(
+            "/api/reminders",
+            json={"order_id": "ORD-20260801-001", "handler": "不存在的人"},
+        )
+        self.assertEqual(response.status_code, 400)
+        self.assertFalse(response.get_json()["success"])
+
+    def test_api_send_reminder_service_unavailable(self):
+        with mock.patch.object(
+            app_module,
+            "send_reminder",
+            return_value=({"success": False, "message": "无法连接催办服务"}, 502),
+        ):
+            response = self.client.post(
+                "/api/reminders",
+                json={"order_id": "ORD-20260801-001", "handler": "王芳"},
+            )
+        self.assertEqual(response.status_code, 502)
+        payload = response.get_json()
+        self.assertFalse(payload["success"])
+        self.assertEqual(payload["message"], "无法连接催办服务")
+
+
+class SendReminderUrlTestCase(unittest.TestCase):
+    def test_send_reminder_normalizes_missing_scheme(self):
+        with mock.patch.object(app_module, "NOTIFICATION_SERVICE_URL", "localhost:9999"), \
+             mock.patch("urllib.request.Request") as request_cls, \
+             mock.patch("urllib.request.urlopen", side_effect=ValueError("offline")):
+            result, status_code = app_module.send_reminder("ORD-1", "王芳")
+
+        request_cls.assert_called_once()
+        self.assertEqual(request_cls.call_args.args[0], "http://localhost:9999/api/reminders")
+        self.assertEqual(status_code, 502)
+        self.assertFalse(result["success"])
 
 
 if __name__ == "__main__":

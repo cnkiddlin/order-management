@@ -1,10 +1,17 @@
 import json
 import os
+import urllib.error
+import urllib.request
+
 from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
 
 DATA_FILE = os.path.join(os.path.dirname(__file__), "data", "orders.json")
+HANDLERS = ["王芳", "李强", "赵敏", "陈浩"]
+NOTIFICATION_SERVICE_URL = os.environ.get(
+    "NOTIFICATION_SERVICE_URL", "http://localhost:8081"
+).rstrip("/")
 
 
 def load_orders():
@@ -43,5 +50,49 @@ def api_suggest_orders():
     return jsonify({"success": True, "data": [{"order_id": o["order_id"], "status": o["status"]} for o in orders]})
 
 
+@app.route("/api/handlers")
+def api_handlers():
+    return jsonify({"success": True, "data": HANDLERS})
+
+
+def send_reminder(order_id, handler):
+    service_url = NOTIFICATION_SERVICE_URL
+    if service_url and not service_url.startswith(("http://", "https://")):
+        service_url = "http://" + service_url
+    payload = json.dumps({"order_id": order_id, "handler": handler}).encode("utf-8")
+    request_obj = urllib.request.Request(
+        service_url + "/api/reminders",
+        data=payload,
+        headers={"Content-Type": "application/json"},
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(request_obj, timeout=5) as response:
+            return json.loads(response.read().decode("utf-8")), response.status
+    except urllib.error.HTTPError as error:
+        return {"success": False, "message": "催办服务返回错误"}, error.code
+    except (urllib.error.URLError, TimeoutError, OSError, ValueError):
+        return {"success": False, "message": "无法连接催办服务"}, 502
+
+
+@app.route("/api/reminders", methods=["POST"])
+def api_send_reminder():
+    data = request.get_json(silent=True) or {}
+    order_id = (data.get("order_id") or "").strip()
+    handler = (data.get("handler") or "").strip()
+
+    if not order_id or not handler:
+        return jsonify({"success": False, "message": "订单编号和处理者不能为空"}), 400
+    if find_order(order_id) is None:
+        return jsonify({"success": False, "message": "未找到该订单"}), 404
+    if handler not in HANDLERS:
+        return jsonify({"success": False, "message": "处理者不在可选列表中"}), 400
+
+    result, status_code = send_reminder(order_id, handler)
+    if not result.get("success"):
+        return jsonify(result), status_code
+    return jsonify({"success": True, "data": result})
+
+
 if __name__ == "__main__":
-    app.run(debug=True, port=5555)
+    app.run(debug=True, port=8080)

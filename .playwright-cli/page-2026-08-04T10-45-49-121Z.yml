@@ -1,0 +1,12 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: 订单查询
+      - generic "用户" [ref=e10] [cursor=pointer]
+  - main [ref=e14]:
+    - generic [ref=e16]:
+      - paragraph [ref=e17]: 输入订单编号，查看订单详情
+      - generic [ref=e19]:
+        - combobox "例如 ORD-20260801-001" [ref=e23]
+        - button "查询" [ref=e24] [cursor=pointer]
+    - paragraph [ref=e29]: 输入订单编号开始查询

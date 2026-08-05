@@ -564,7 +564,7 @@ body {
   z-index: 1;
 }
 
-.timeline-item:first-child .timeline-dot {
+.timeline-item.active .timeline-dot {
   background: var(--accent);
   border-color: var(--accent);
   box-shadow: 0 0 0 4px var(--accent-soft);
@@ -581,6 +581,89 @@ body {
   font-size: 12px;
   color: var(--text-muted);
   font-family: 'Inter', sans-serif;
+}
+
+/* Reminder */
+.reminder-card {
+  margin-bottom: 20px;
+}
+
+.reminder-body {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.reminder-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.handler-select {
+  min-width: 180px;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 9px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.handler-select:focus {
+  border-color: rgba(169, 139, 79, 0.45);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.remind-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 18px;
+  background: linear-gradient(135deg, var(--accent), #C9B377);
+  color: #fff;
+  border: none;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: filter 0.2s ease, box-shadow 0.2s ease;
+}
+
+.remind-btn:hover {
+  filter: brightness(1.04);
+  box-shadow: 0 4px 16px var(--accent-glow);
+}
+
+.remind-btn:active {
+  transform: scale(0.97);
+}
+
+.remind-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.reminder-result {
+  min-height: 18px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.reminder-result.success {
+  color: var(--status-complete);
+}
+
+.reminder-result.error {
+  color: var(--status-pending);
 }
 
 /* Animations */
@@ -627,5 +710,18 @@ body {
 
   .info-value.addr {
     max-width: 200px;
+  }
+
+  .reminder-body {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .handler-select {
+    width: 100%;
+  }
+
+  .remind-btn {
+    justify-content: center;
   }
 }

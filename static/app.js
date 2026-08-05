@@ -5,12 +5,24 @@ const STATUS_MAP = {
   '待付款': 'status-pending'
 };
 
+const TIMELINE_STATUS_EVENT = {
+  '待付款': '等待付款',
+  '处理中': '仓库拣货',
+  '已发货': '已发货',
+  '已完成': '订单完成'
+};
+
 const input = document.getElementById('orderInput');
 const searchBtn = document.getElementById('searchBtn');
 const searchHint = document.getElementById('searchHint');
 const orderDetail = document.getElementById('orderDetail');
 const emptyState = document.getElementById('emptyState');
 const datalist = document.getElementById('orderList');
+const handlerSelect = document.getElementById('handlerSelect');
+const remindBtn = document.getElementById('remindBtn');
+const reminderResult = document.getElementById('reminderResult');
+
+let currentOrder = null;
 
 function fmtCurrency(n) {
   return '\u00a5' + Number(n).toLocaleString('zh-CN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -18,6 +30,16 @@ function fmtCurrency(n) {
 
 function statusClass(s) {
   return STATUS_MAP[s] || 'status-default';
+}
+
+function timelineActiveIndex(order) {
+  const events = order.timeline || [];
+  const targetEvent = TIMELINE_STATUS_EVENT[order.status];
+  if (targetEvent) {
+    const index = events.findIndex(function(t) { return t.event === targetEvent; });
+    if (index !== -1) return index;
+  }
+  return events.length - 1;
 }
 
 function showHint(msg) {
@@ -30,7 +52,27 @@ function clearHint() {
   searchHint.classList.remove('show');
 }
 
+function populateHandlers(handlers) {
+  handlerSelect.innerHTML = '';
+  handlers.forEach(function(handler) {
+    const option = document.createElement('option');
+    option.value = handler;
+    option.textContent = handler;
+    handlerSelect.appendChild(option);
+  });
+  remindBtn.disabled = handlers.length === 0;
+}
+
+function showReminderResult(text, isError) {
+  reminderResult.textContent = text;
+  reminderResult.classList.toggle('error', Boolean(isError));
+  reminderResult.classList.toggle('success', !isError);
+}
+
 function renderOrder(order) {
+  currentOrder = order;
+  showReminderResult('', false);
+
   document.getElementById('orderId').textContent = order.order_id;
   document.getElementById('orderCreated').textContent = order.created_at;
   document.getElementById('orderUpdated').textContent = order.updated_at;
@@ -82,9 +124,12 @@ function renderOrder(order) {
 
   // Timeline
   const timelineEl = document.getElementById('timeline');
-  timelineEl.innerHTML = order.timeline.map(function(t) {
+  const events = order.timeline || [];
+  const activeIndex = timelineActiveIndex(order);
+  timelineEl.innerHTML = events.map(function(t, i) {
+    const stateClass = i === activeIndex ? ' active' : '';
     return '\
-      <div class="timeline-item">\
+      <div class="timeline-item' + stateClass + '">\
         <div class="timeline-dot"></div>\
         <div class="timeline-content">\
           <div class="event">' + t.event + '</div>\
@@ -126,10 +171,46 @@ async function searchOrder() {
   }
 }
 
+async function sendReminder() {
+  if (!currentOrder) return;
+
+  const handler = handlerSelect.value;
+  if (!handler) {
+    showReminderResult('请选择处理者', true);
+    return;
+  }
+
+  remindBtn.disabled = true;
+  remindBtn.querySelector('span').textContent = '发送中';
+
+  try {
+    const res = await fetch('/api/reminders', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        order_id: currentOrder.order_id,
+        handler: handler
+      })
+    });
+    const data = await res.json();
+    if (res.ok && data.success) {
+      showReminderResult('催办信息成功发送', false);
+    } else {
+      showReminderResult(data.message || '催办失败', true);
+    }
+  } catch (e) {
+    showReminderResult('催办失败，请稍后重试', true);
+  } finally {
+    remindBtn.disabled = handlerSelect.options.length === 0;
+    remindBtn.querySelector('span').textContent = '发送催办';
+  }
+}
+
 searchBtn.addEventListener('click', searchOrder);
 input.addEventListener('keydown', function(e) {
   if (e.key === 'Enter') searchOrder();
 });
+remindBtn.addEventListener('click', sendReminder);
 
 // Load suggestions for datalist
 fetch('/api/orders/suggest').then(function(r) { return r.json(); }).then(function(data) {
@@ -142,3 +223,14 @@ fetch('/api/orders/suggest').then(function(r) { return r.json(); }).then(functio
     });
   }
 }).catch(function() {});
+
+// Load handler options for reminders
+fetch('/api/handlers').then(function(r) { return r.json(); }).then(function(data) {
+  if (data.success) {
+    populateHandlers(data.data);
+  } else {
+    remindBtn.disabled = true;
+  }
+}).catch(function() {
+  remindBtn.disabled = true;
+});

@@ -79,6 +79,25 @@
         </div>
       </div>
 
+      <!-- Reminder -->
+      <div class="detail-card reminder-card">
+        <div class="card-header">
+          <h3>催办</h3>
+        </div>
+        <div class="card-body reminder-body">
+          <label class="reminder-label" for="handlerSelect">处理者</label>
+          <select id="handlerSelect" class="handler-select" aria-label="处理者"></select>
+          <button id="remindBtn" class="remind-btn" type="button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>
+              <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
+            </svg>
+            <span>发送催办</span>
+          </button>
+          <span class="reminder-result" id="reminderResult" role="status"></span>
+        </div>
+      </div>
+
       <!-- Content Grid -->
       <div class="detail-grid">
         <!-- Items -->

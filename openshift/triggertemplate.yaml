@@ -14,7 +14,7 @@ spec:
       kind: PipelineRun
 
       metadata:
-        generateName: order-management-
+        generateName: order-management
 
       spec:
         pipelineRef:

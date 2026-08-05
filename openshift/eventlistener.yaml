@@ -1,19 +1,39 @@
 apiVersion: triggers.tekton.dev/v1beta1
 kind: EventListener
-
 metadata:
   name: github-listener
 
 spec:
-
   serviceAccountName: pipeline
 
   triggers:
 
-    - name: github-push
+    - name: order
+
+      interceptors:
+        - ref:
+            name: cel
+          params:
+            - name: filter
+              value: body.repository.name == "order-management"
 
       bindings:
         - ref: github-push-binding
 
       template:
         ref: order-management-template
+
+    - name: inventory
+
+      interceptors:
+        - ref:
+            name: cel
+          params:
+            - name: filter
+              value: body.repository.name == "order-notification"
+
+      bindings:
+        - ref: github-push-binding
+
+      template:
+        ref: order-notification-template
