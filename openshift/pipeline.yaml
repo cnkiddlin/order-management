@@ -62,10 +62,27 @@ spec:
 
         - name: source
           workspace: source
-    - name: build-image
+
+    #
+    # Dependency scan
+    #
+    - name: trivy-scan
 
       runAfter:
         - unittest
+
+      taskRef:
+        name: trivy-fs
+
+      workspaces:
+
+        - name: source
+          workspace: source
+
+    - name: build-image
+
+      runAfter:
+        - trivy-scan
 
       taskRef:
         name: buildah
