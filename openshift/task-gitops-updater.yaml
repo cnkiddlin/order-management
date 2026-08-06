@@ -77,6 +77,16 @@ spec:
         printf 'https://%s:%s@github.com\n' "$GIT_USERNAME" "$GIT_PASSWORD" > "$HOME/.git-credentials"
         chmod 600 "$HOME/.git-credentials"
 
+        cat > "$HOME/askpass.sh" <<'EOF'
+        #!/bin/sh
+        case "$1" in
+          *Username*) printf '%s\n' "$GIT_USERNAME" ;;
+          *Password*) printf '%s\n' "$GIT_PASSWORD" ;;
+        esac
+        EOF
+        chmod +x "$HOME/askpass.sh"
+        export GIT_ASKPASS="$HOME/askpass.sh"
+
         rm -rf "$repo_dir"
         git clone --depth 1 --branch "$(params.gitops-branch)" "$(params.gitops-repo-url)" "$repo_dir"
         cd "$repo_dir"
