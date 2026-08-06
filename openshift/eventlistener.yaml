@@ -15,7 +15,7 @@ spec:
             name: cel
           params:
             - name: filter
-              value: body.repository.name == "order-management"
+              value: body.repository.name == "order-management" && body.ref == "refs/heads/main"
 
       bindings:
         - ref: github-push-binding
@@ -30,7 +30,7 @@ spec:
             name: cel
           params:
             - name: filter
-              value: body.repository.name == "order-notification"
+              value: body.repository.name == "order-notification" && body.ref == "refs/heads/main"
 
       bindings:
         - ref: github-push-binding

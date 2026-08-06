@@ -1,0 +1,95 @@
+apiVersion: tekton.dev/v1
+kind: Task
+
+metadata:
+  name: update-gitops
+
+spec:
+
+  params:
+    - name: gitops-repo-url
+      type: string
+      default: https://github.com/cnkiddlin/order-app-gitops.git
+
+    - name: gitops-branch
+      type: string
+      default: main
+
+    - name: gitops-path
+      type: string
+
+    - name: app-name
+      type: string
+
+    - name: image
+      type: string
+      default: image-registry.openshift-image-registry.svc:5000/order-app/order-management
+
+    - name: tag
+      type: string
+
+    - name: commit-user-name
+      type: string
+      default: openshift-pipeline
+
+    - name: commit-user-email
+      type: string
+      default: openshift-pipeline@localhost
+
+  workspaces:
+    - name: source
+
+  steps:
+    - name: update-image-tag
+
+      image: registry.redhat.io/openshift-pipelines/pipelines-git-init-rhel9@sha256:d8de2ba836fe94183804e10e122a9e19ff480a63be43feeaf3bc88d5f32c21cb
+
+      env:
+        - name: GIT_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: gitops-auth
+              key: username
+
+        - name: GIT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: gitops-auth
+              key: password
+
+      workingDir: $(workspaces.source.path)
+
+      script: |
+        #!/usr/bin/env sh
+        set -eu
+
+        gitops_path="$(params.gitops-path)"
+        image_ref="$(params.image):$(params.tag)"
+        repo_dir="$(pwd)/gitops"
+        home_dir="$(pwd)/.gitops-home"
+
+        mkdir -p "$home_dir"
+        export HOME="$home_dir"
+
+        git config --global user.name "$(params.commit-user-name)"
+        git config --global user.email "$(params.commit-user-email)"
+        git config --global credential.helper store
+        printf 'https://%s:%s@github.com\n' "$GIT_USERNAME" "$GIT_PASSWORD" > "$HOME/.git-credentials"
+        chmod 600 "$HOME/.git-credentials"
+
+        rm -rf "$repo_dir"
+        git clone --depth 1 --branch "$(params.gitops-branch)" "$(params.gitops-repo-url)" "$repo_dir"
+        cd "$repo_dir"
+
+        sed -i "s|image: .*|image: ${image_ref}|" "${gitops_path}/deployment.yaml"
+        sed -i "s|newTag: .*|newTag: $(params.tag)|" "${gitops_path}/kustomization.yaml"
+
+        git add "${gitops_path}/deployment.yaml" "${gitops_path}/kustomization.yaml"
+
+        if git diff --cached --quiet; then
+          echo "Image tag already up to date"
+        else
+          git commit -m "Update $(params.app-name) image tag to $(params.tag)"
+          git pull --rebase origin "$(params.gitops-branch)"
+          git push origin "$(params.gitops-branch)"
+        fi

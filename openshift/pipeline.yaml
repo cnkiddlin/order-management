@@ -109,3 +109,29 @@ spec:
 
         - name: source
           workspace: source
+    - name: update-gitops
+
+      runAfter:
+        - build-image
+
+      taskRef:
+        name: update-gitops
+
+      params:
+
+        - name: gitops-path
+          value: order-management
+
+        - name: app-name
+          value: order-management
+
+        - name: image
+          value: $(params.image)
+
+        - name: tag
+          value: $(params.revision)
+
+      workspaces:
+
+        - name: source
+          workspace: source
