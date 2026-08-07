@@ -17,7 +17,6 @@ const searchBtn = document.getElementById('searchBtn');
 const searchHint = document.getElementById('searchHint');
 const orderDetail = document.getElementById('orderDetail');
 const emptyState = document.getElementById('emptyState');
-const datalist = document.getElementById('orderList');
 const handlerSelect = document.getElementById('handlerSelect');
 const remindBtn = document.getElementById('remindBtn');
 const reminderResult = document.getElementById('reminderResult');
@@ -211,18 +210,6 @@ input.addEventListener('keydown', function(e) {
   if (e.key === 'Enter') searchOrder();
 });
 remindBtn.addEventListener('click', sendReminder);
-
-// Load suggestions for datalist
-fetch('/api/orders/suggest').then(function(r) { return r.json(); }).then(function(data) {
-  if (data.success) {
-    data.data.forEach(function(o) {
-      const opt = document.createElement('option');
-      opt.value = o.order_id;
-      opt.label = o.status;
-      datalist.appendChild(opt);
-    });
-  }
-}).catch(function() {});
 
 // Load handler options for reminders
 fetch('/api/handlers').then(function(r) { return r.json(); }).then(function(data) {

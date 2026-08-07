@@ -7,8 +7,18 @@
       "email": "zhangming@example.com"
     },
     "items": [
-      { "name": "AirPods Pro 2", "sku": "APP-002", "quantity": 1, "price": 1899.00 },
-      { "name": "硅胶保护壳", "sku": "APP-Case", "quantity": 1, "price": 199.00 }
+      {
+        "name": "AirPods Pro 2",
+        "sku": "APP-002",
+        "quantity": 1,
+        "price": 1899.0
+      },
+      {
+        "name": "硅胶保护壳",
+        "sku": "APP-Case",
+        "quantity": 1,
+        "price": 199.0
+      }
     ],
     "shipping": {
       "address": "北京市朝阳区建国路88号 SOHO 现代城 A座 1601",
@@ -17,14 +27,26 @@
     },
     "status": "已发货",
     "payment_method": "微信支付",
-    "total": 2098.00,
+    "total": 2098.0,
     "created_at": "2026-08-01 10:23:00",
     "updated_at": "2026-08-02 09:15:00",
     "timeline": [
-      { "time": "2026-08-01 10:23", "event": "订单创建" },
-      { "time": "2026-08-01 10:25", "event": "支付成功" },
-      { "time": "2026-08-01 14:00", "event": "仓库拣货" },
-      { "time": "2026-08-02 08:00", "event": "已发货" }
+      {
+        "time": "2026-08-01 10:23",
+        "event": "订单创建"
+      },
+      {
+        "time": "2026-08-01 10:25",
+        "event": "支付成功"
+      },
+      {
+        "time": "2026-08-01 14:00",
+        "event": "仓库拣货"
+      },
+      {
+        "time": "2026-08-02 08:00",
+        "event": "已发货"
+      }
     ]
   },
   {
@@ -35,9 +57,24 @@
       "email": "lihua@example.com"
     },
     "items": [
-      { "name": "MacBook Pro 14 M4", "sku": "MBP-14-M4", "quantity": 1, "price": 14999.00 },
-      { "name": "USB-C 多功能扩展坞", "sku": "ACC-HUB-01", "quantity": 1, "price": 399.00 },
-      { "name": "Magic Mouse", "sku": "MM-USB-C", "quantity": 1, "price": 799.00 }
+      {
+        "name": "MacBook Pro 14 M4",
+        "sku": "MBP-14-M4",
+        "quantity": 1,
+        "price": 14999.0
+      },
+      {
+        "name": "USB-C 多功能扩展坞",
+        "sku": "ACC-HUB-01",
+        "quantity": 1,
+        "price": 399.0
+      },
+      {
+        "name": "Magic Mouse",
+        "sku": "MM-USB-C",
+        "quantity": 1,
+        "price": 799.0
+      }
     ],
     "shipping": {
       "address": "上海市浦东新区陆家嘴环路1000号 汇丰大厦 25层",
@@ -46,13 +83,22 @@
     },
     "status": "处理中",
     "payment_method": "信用卡",
-    "total": 16197.00,
+    "total": 16197.0,
     "created_at": "2026-08-02 16:45:00",
     "updated_at": "2026-08-02 16:45:00",
     "timeline": [
-      { "time": "2026-08-02 16:45", "event": "订单创建" },
-      { "time": "2026-08-02 16:48", "event": "支付成功" },
-      { "time": "2026-08-02 17:10", "event": "仓库拣货" }
+      {
+        "time": "2026-08-02 16:45",
+        "event": "订单创建"
+      },
+      {
+        "time": "2026-08-02 16:48",
+        "event": "支付成功"
+      },
+      {
+        "time": "2026-08-02 17:10",
+        "event": "仓库拣货"
+      }
     ]
   },
   {
@@ -63,8 +109,18 @@
       "email": "wangfang@example.com"
     },
     "items": [
-      { "name": "iPhone 16 Pro Max 256G", "sku": "IP16PM-256", "quantity": 1, "price": 9999.00 },
-      { "name": "MagSafe 磁吸充电器", "sku": "ACC-MAG-15", "quantity": 2, "price": 329.00 }
+      {
+        "name": "iPhone 16 Pro Max 256G",
+        "sku": "IP16PM-256",
+        "quantity": 1,
+        "price": 9999.0
+      },
+      {
+        "name": "MagSafe 磁吸充电器",
+        "sku": "ACC-MAG-15",
+        "quantity": 2,
+        "price": 329.0
+      }
     ],
     "shipping": {
       "address": "广州市天河区天河路208号粤海天河城大厦12层",
@@ -73,16 +129,34 @@
     },
     "status": "已完成",
     "payment_method": "支付宝",
-    "total": 10657.00,
+    "total": 10657.0,
     "created_at": "2026-07-30 08:00:00",
     "updated_at": "2026-08-01 18:00:00",
     "timeline": [
-      { "time": "2026-07-30 08:00", "event": "订单创建" },
-      { "time": "2026-07-30 08:02", "event": "支付成功" },
-      { "time": "2026-07-30 11:00", "event": "仓库拣货" },
-      { "time": "2026-07-30 18:30", "event": "已发货" },
-      { "time": "2026-08-01 14:25", "event": "确认收货" },
-      { "time": "2026-08-01 18:00", "event": "订单完成" }
+      {
+        "time": "2026-07-30 08:00",
+        "event": "订单创建"
+      },
+      {
+        "time": "2026-07-30 08:02",
+        "event": "支付成功"
+      },
+      {
+        "time": "2026-07-30 11:00",
+        "event": "仓库拣货"
+      },
+      {
+        "time": "2026-07-30 18:30",
+        "event": "已发货"
+      },
+      {
+        "time": "2026-08-01 14:25",
+        "event": "确认收货"
+      },
+      {
+        "time": "2026-08-01 18:00",
+        "event": "订单完成"
+      }
     ]
   },
   {
@@ -93,9 +167,24 @@
       "email": "zhaoxue@example.com"
     },
     "items": [
-      { "name": "iPad Pro 11 M4 256G", "sku": "IPP-11-M4-256", "quantity": 1, "price": 8999.00 },
-      { "name": "Apple Pencil Pro", "sku": "APP-PRO", "quantity": 1, "price": 949.00 },
-      { "name": "Magic Keyboard", "sku": "MK-11", "quantity": 1, "price": 2399.00 }
+      {
+        "name": "iPad Pro 11 M4 256G",
+        "sku": "IPP-11-M4-256",
+        "quantity": 1,
+        "price": 8999.0
+      },
+      {
+        "name": "Apple Pencil Pro",
+        "sku": "APP-PRO",
+        "quantity": 1,
+        "price": 949.0
+      },
+      {
+        "name": "Magic Keyboard",
+        "sku": "MK-11",
+        "quantity": 1,
+        "price": 2399.0
+      }
     ],
     "shipping": {
       "address": "深圳市南山区科技园南区深南大道9988号",
@@ -104,14 +193,26 @@
     },
     "status": "已发货",
     "payment_method": "Apple Pay",
-    "total": 12347.00,
+    "total": 12347.0,
     "created_at": "2026-08-03 09:30:00",
     "updated_at": "2026-08-03 14:00:00",
     "timeline": [
-      { "time": "2026-08-03 09:30", "event": "订单创建" },
-      { "time": "2026-08-03 09:35", "event": "支付成功" },
-      { "time": "2026-08-03 12:00", "event": "仓库拣货" },
-      { "time": "2026-08-03 14:00", "event": "已发货" }
+      {
+        "time": "2026-08-03 09:30",
+        "event": "订单创建"
+      },
+      {
+        "time": "2026-08-03 09:35",
+        "event": "支付成功"
+      },
+      {
+        "time": "2026-08-03 12:00",
+        "event": "仓库拣货"
+      },
+      {
+        "time": "2026-08-03 14:00",
+        "event": "已发货"
+      }
     ]
   },
   {
@@ -122,8 +223,18 @@
       "email": "liuyang@example.com"
     },
     "items": [
-      { "name": "Apple Watch Series 10 45mm", "sku": "AW-S10-45", "quantity": 1, "price": 3199.00 },
-      { "name": "编织回环表带", "sku": "AW-STR-BR", "quantity": 2, "price": 379.00 }
+      {
+        "name": "Apple Watch Series 10 45mm",
+        "sku": "AW-S10-45",
+        "quantity": 1,
+        "price": 3199.0
+      },
+      {
+        "name": "编织回环表带",
+        "sku": "AW-STR-BR",
+        "quantity": 2,
+        "price": 379.0
+      }
     ],
     "shipping": {
       "address": "成都市锦江区红星路三段1号IFS国际金融中心",
@@ -132,12 +243,1286 @@
     },
     "status": "待付款",
     "payment_method": "——",
-    "total": 3957.00,
+    "total": 3957.0,
     "created_at": "2026-08-04 08:15:00",
     "updated_at": "2026-08-04 08:15:00",
     "timeline": [
-      { "time": "2026-08-04 08:15", "event": "订单创建" },
-      { "time": "2026-08-04 08:15", "event": "等待付款" }
+      {
+        "time": "2026-08-04 08:15",
+        "event": "订单创建"
+      },
+      {
+        "time": "2026-08-04 08:15",
+        "event": "等待付款"
+      }
+    ]
+  },
+  {
+    "order_id": "ORD-20260715-002",
+    "customer": {
+      "name": "陈静",
+      "phone": "138-1010-2001",
+      "email": "chenjing@example.com"
+    },
+    "items": [
+      {
+        "name": "华为 Mate 70 Pro 512G",
+        "sku": "HW-M70P-512",
+        "quantity": 1,
+        "price": 6999.0
+      },
+      {
+        "name": "华为 FreeBuds Pro 4",
+        "sku": "HW-FBP4",
+        "quantity": 1,
+        "price": 1499.0
+      },
+      {
+        "name": "华为 50W 无线充电器",
+        "sku": "HW-WC-50",
+        "quantity": 1,
+        "price": 199.0
+      }
+    ],
+    "shipping": {
+      "address": "杭州市西湖区文三路90号东部软件园创新大厦 A座 8层",
+      "method": "顺丰速运",
+      "tracking_no": "SF1029384756"
+    },
+    "status": "已完成",
+    "payment_method": "微信支付",
+    "total": 8697.0,
+    "created_at": "2026-07-15 09:12:00",
+    "updated_at": "2026-07-17 16:40:00",
+    "timeline": [
+      {
+        "time": "2026-07-15 09:12",
+        "event": "订单创建"
+      },
+      {
+        "time": "2026-07-15 09:15",
+        "event": "支付成功"
+      },
+      {
+        "time": "2026-07-15 11:30",
+        "event": "仓库拣货"
+      },
+      {
+        "time": "2026-07-16 08:00",
+        "event": "已发货"
+      },
+      {
+        "time": "2026-07-17 14:20",
+        "event": "确认收货"
+      },
+      {
+        "time": "2026-07-17 16:40",
+        "event": "订单完成"
+      }
+    ]
+  },
+  {
+    "order_id": "ORD-20260716-011",
+    "customer": {
+      "name": "杨帆",
+      "phone": "139-2020-3002",
+      "email": "yangfan@163.com"
+    },
+    "items": [
+      {
+        "name": "小米 14 Ultra 512G",
+        "sku": "MI-14U-512",
+        "quantity": 1,
+        "price": 6499.0
+      },
+      {
+        "name": "小米 Buds 5 Pro",
+        "sku": "MI-BUDS5P",
+        "quantity": 1,
+        "price": 1299.0
+      }
+    ],
+    "shipping": {
+      "address": "南京市建邺区江东中路258号万达广场 A座 1203",
+      "method": "京东物流",
+      "tracking_no": "JD8877665544"
+    },
+    "status": "已完成",
+    "payment_method": "支付宝",
+    "total": 7798.0,
+    "created_at": "2026-07-16 14:05:00",
+    "updated_at": "2026-07-18 11:25:00",
+    "timeline": [
+      {
+        "time": "2026-07-16 14:05",
+        "event": "订单创建"
+      },
+      {
+        "time": "2026-07-16 14:08",
+        "event": "支付成功"
+      },
+      {
+        "time": "2026-07-16 16:00",
+        "event": "仓库拣货"
+      },
+      {
+        "time": "2026-07-17 09:00",
+        "event": "已发货"
+      },
+      {
+        "time": "2026-07-18 10:00",
+        "event": "确认收货"
+      },
+      {
+        "time": "2026-07-18 11:25",
+        "event": "订单完成"
+      }
+    ]
+  },
+  {
+    "order_id": "ORD-20260717-005",
+    "customer": {
+      "name": "周涛",
+      "phone": "137-3030-4003",
+      "email": "zhoutao@qq.com"
+    },
+    "items": [
+      {
+        "name": "联想 ThinkPad X1 Carbon",
+        "sku": "LEN-X1C-01",
+        "quantity": 1,
+        "price": 10999.0
+      },
+      {
+        "name": "罗技 MX Master 3S",
+        "sku": "LOGI-MX3S",
+        "quantity": 1,
+        "price": 699.0
+      }
+    ],
+    "shipping": {
+      "address": "武汉市洪山区光谷大道77号金融港 B6栋 15层",
+      "method": "顺丰速运",
+      "tracking_no": "SF9988776655"
+    },
+    "status": "已完成",
+    "payment_method": "企业转账",
+    "total": 11698.0,
+    "created_at": "2026-07-17 10:00:00",
+    "updated_at": "2026-07-19 15:30:00",
+    "timeline": [
+      {
+        "time": "2026-07-17 10:00",
+        "event": "订单创建"
+      },
+      {
+        "time": "2026-07-17 10:05",
+        "event": "支付成功"
+      },
+      {
+        "time": "2026-07-17 13:00",
+        "event": "仓库拣货"
+      },
+      {
+        "time": "2026-07-18 09:00",
+        "event": "已发货"
+      },
+      {
+        "time": "2026-07-19 14:00",
+        "event": "确认收货"
+      },
+      {
+        "time": "2026-07-19 15:30",
+        "event": "订单完成"
+      }
+    ]
+  },
+  {
+    "order_id": "ORD-20260718-009",
+    "customer": {
+      "name": "吴敏",
+      "phone": "136-4040-5004",
+      "email": "wumin@example.com"
+    },
+    "items": [
+      {
+        "name": "戴森 V15 Detect 吸尘器",
+        "sku": "DY-V15",
+        "quantity": 1,
+        "price": 4990.0
+      },
+      {
+        "name": "戴森收纳支架",
+        "sku": "DY-HOLD-01",
+        "quantity": 1,
+        "price": 249.0
+      }
+    ],
+    "shipping": {
+      "address": "成都市武侯区天府大道北段1700号环球中心 E2-1608",
+      "method": "京东物流",
+      "tracking_no": "JD1122334455"
+    },
+    "status": "已完成",
+    "payment_method": "信用卡",
+    "total": 5239.0,
+    "created_at": "2026-07-18 16:22:00",
+    "updated_at": "2026-07-20 10:10:00",
+    "timeline": [
+      {
+        "time": "2026-07-18 16:22",
+        "event": "订单创建"
+      },
+      {
+        "time": "2026-07-18 16:25",
+        "event": "支付成功"
+      },
+      {
+        "time": "2026-07-18 18:00",
+        "event": "仓库拣货"
+      },
+      {
+        "time": "2026-07-19 10:00",
+        "event": "已发货"
+      },
+      {
+        "time": "2026-07-20 09:00",
+        "event": "确认收货"
+      },
+      {
+        "time": "2026-07-20 10:10",
+        "event": "订单完成"
+      }
+    ]
+  },
+  {
+    "order_id": "ORD-20260719-003",
+    "customer": {
+      "name": "徐丽",
+      "phone": "135-5050-6005",
+      "email": "xuli@gmail.com"
+    },
+    "items": [
+      {
+        "name": "索尼 WH-1000XM6 耳机",
+        "sku": "SNY-WH1000X",
+        "quantity": 1,
+        "price": 2899.0
+      },
+      {
+        "name": "索尼耳机保护套",
+        "sku": "SNY-CASE-01",
+        "quantity": 2,
+        "price": 79.0
+      }
+    ],
+    "shipping": {
+      "address": "西安市雁塔区高新路25号唐久广场 5层",
+      "method": "中通快递",
+      "tracking_no": "ZTO6677889900"
+    },
+    "status": "已完成",
+    "payment_method": "花呗",
+    "total": 3057.0,
+    "created_at": "2026-07-19 11:48:00",
+    "updated_at": "2026-07-21 17:05:00",
+    "timeline": [
+      {
+        "time": "2026-07-19 11:48",
+        "event": "订单创建"
+      },
+      {
+        "time": "2026-07-19 11:50",
+        "event": "支付成功"
+      },
+      {
+        "time": "2026-07-19 15:00",
+        "event": "仓库拣货"
+      },
+      {
+        "time": "2026-07-20 09:00",
+        "event": "已发货"
+      },
+      {
+        "time": "2026-07-21 16:00",
+        "event": "确认收货"
+      },
+      {
+        "time": "2026-07-21 17:05",
+        "event": "订单完成"
+      }
+    ]
+  },
+  {
+    "order_id": "ORD-20260720-016",
+    "customer": {
+      "name": "孙强",
+      "phone": "131-6060-7006",
+      "email": "sunqiang@example.com"
+    },
+    "items": [
+      {
+        "name": "美的空调 1.5匹 新一级能效",
+        "sku": "MID-AC-15",
+        "quantity": 1,
+        "price": 2699.0
+      },
+      {
+        "name": "美的空调安装服务",
+        "sku": "MID-INSTALL",
+        "quantity": 1,
+        "price": 200.0
+      }
+    ],
+    "shipping": {
+      "address": "重庆市渝北区金开大道1230号爱加西西里 3栋 1202",
+      "method": "京东物流",
+      "tracking_no": "JD4455667788"
+    },
+    "status": "已发货",
+    "payment_method": "微信支付",
+    "total": 2899.0,
+    "created_at": "2026-07-20 08:30:00",
+    "updated_at": "2026-07-21 09:00:00",
+    "timeline": [
+      {
+        "time": "2026-07-20 08:30",
+        "event": "订单创建"
+      },
+      {
+        "time": "2026-07-20 08:32",
+        "event": "支付成功"
+      },
+      {
+        "time": "2026-07-20 11:00",
+        "event": "仓库拣货"
+      },
+      {
+        "time": "2026-07-21 09:00",
+        "event": "已发货"
+      }
+    ]
+  },
+  {
+    "order_id": "ORD-20260721-008",
+    "customer": {
+      "name": "马超",
+      "phone": "132-7070-8007",
+      "email": "machao@163.com"
+    },
+    "items": [
+      {
+        "name": "大疆 Mini 5 Pro 畅飞套装",
+        "sku": "DJI-MINI5-FC",
+        "quantity": 1,
+        "price": 4788.0
+      },
+      {
+        "name": "大疆 128G 内存卡",
+        "sku": "DJI-SD128",
+        "quantity": 1,
+        "price": 129.0
+      }
+    ],
+    "shipping": {
+      "address": "苏州市工业园区苏州大道东265号现代传媒广场 22层",
+      "method": "顺丰速运",
+      "tracking_no": "SF3344556677"
+    },
+    "status": "已发货",
+    "payment_method": "支付宝",
+    "total": 4917.0,
+    "created_at": "2026-07-21 13:20:00",
+    "updated_at": "2026-07-22 08:45:00",
+    "timeline": [
+      {
+        "time": "2026-07-21 13:20",
+        "event": "订单创建"
+      },
+      {
+        "time": "2026-07-21 13:22",
+        "event": "支付成功"
+      },
+      {
+        "time": "2026-07-21 15:30",
+        "event": "仓库拣货"
+      },
+      {
+        "time": "2026-07-22 08:45",
+        "event": "已发货"
+      }
+    ]
+  },
+  {
+    "order_id": "ORD-20260722-013",
+    "customer": {
+      "name": "朱琳",
+      "phone": "133-8080-9008",
+      "email": "zhulin@qq.com"
+    },
+    "items": [
+      {
+        "name": "兰蔻小黑瓶精华 100ml",
+        "sku": "LAN-ESS-100",
+        "quantity": 1,
+        "price": 1280.0
+      },
+      {
+        "name": "兰蔻菁纯眼霜",
+        "sku": "LAN-EYE-20",
+        "quantity": 1,
+        "price": 860.0
+      }
+    ],
+    "shipping": {
+      "address": "长沙市开福区芙蓉中路一段478号运达国际广场 10层",
+      "method": "韵达快递",
+      "tracking_no": "YD5566778899"
+    },
+    "status": "已发货",
+    "payment_method": "银联",
+    "total": 2140.0,
+    "created_at": "2026-07-22 09:40:00",
+    "updated_at": "2026-07-22 15:10:00",
+    "timeline": [
+      {
+        "time": "2026-07-22 09:40",
+        "event": "订单创建"
+      },
+      {
+        "time": "2026-07-22 09:42",
+        "event": "支付成功"
+      },
+      {
+        "time": "2026-07-22 12:00",
+        "event": "仓库拣货"
+      },
+      {
+        "time": "2026-07-22 15:10",
+        "event": "已发货"
+      }
+    ]
+  },
+  {
+    "order_id": "ORD-20260723-006",
+    "customer": {
+      "name": "胡军",
+      "phone": "134-9090-1009",
+      "email": "hujun@example.com"
+    },
+    "items": [
+      {
+        "name": "云鲸 J5 扫地机器人",
+        "sku": "NJ-J5",
+        "quantity": 1,
+        "price": 3299.0
+      },
+      {
+        "name": "云鲸清洁液套装",
+        "sku": "NJ-CLEAN-01",
+        "quantity": 1,
+        "price": 59.0
+      }
+    ],
+    "shipping": {
+      "address": "郑州市金水区花园路39号国贸中心 360广场 A座 1805",
+      "method": "京东物流",
+      "tracking_no": "JD9988776655"
+    },
+    "status": "已发货",
+    "payment_method": "京东白条",
+    "total": 3358.0,
+    "created_at": "2026-07-23 15:36:00",
+    "updated_at": "2026-07-24 10:20:00",
+    "timeline": [
+      {
+        "time": "2026-07-23 15:36",
+        "event": "订单创建"
+      },
+      {
+        "time": "2026-07-23 15:38",
+        "event": "支付成功"
+      },
+      {
+        "time": "2026-07-23 17:00",
+        "event": "仓库拣货"
+      },
+      {
+        "time": "2026-07-24 10:20",
+        "event": "已发货"
+      }
+    ]
+  },
+  {
+    "order_id": "ORD-20260724-019",
+    "customer": {
+      "name": "郭涛",
+      "phone": "150-0101-2010",
+      "email": "guotao@163.com"
+    },
+    "items": [
+      {
+        "name": "耐克 Air Zoom Pegasus 41",
+        "sku": "NK-PEG41",
+        "quantity": 1,
+        "price": 1099.0
+      },
+      {
+        "name": "耐克 Dri-FIT 运动短裤",
+        "sku": "NK-SHORT-01",
+        "quantity": 2,
+        "price": 299.0
+      }
+    ],
+    "shipping": {
+      "address": "青岛市市南区香港中路59号国际金融中心 2期 1601",
+      "method": "圆通速递",
+      "tracking_no": "YT1122334455"
+    },
+    "status": "已发货",
+    "payment_method": "微信支付",
+    "total": 1697.0,
+    "created_at": "2026-07-24 10:15:00",
+    "updated_at": "2026-07-25 09:00:00",
+    "timeline": [
+      {
+        "time": "2026-07-24 10:15",
+        "event": "订单创建"
+      },
+      {
+        "time": "2026-07-24 10:18",
+        "event": "支付成功"
+      },
+      {
+        "time": "2026-07-24 13:00",
+        "event": "仓库拣货"
+      },
+      {
+        "time": "2026-07-25 09:00",
+        "event": "已发货"
+      }
+    ]
+  },
+  {
+    "order_id": "ORD-20260725-004",
+    "customer": {
+      "name": "林芳",
+      "phone": "151-1111-3111",
+      "email": "linfang@example.com"
+    },
+    "items": [
+      {
+        "name": "飞利浦电动牙刷 HX9996",
+        "sku": "PH-HX9996",
+        "quantity": 1,
+        "price": 1599.0
+      },
+      {
+        "name": "飞利浦冲牙器",
+        "sku": "PH-OW-01",
+        "quantity": 1,
+        "price": 899.0
+      }
+    ],
+    "shipping": {
+      "address": "厦门市思明区莲前东路168号百脑汇科技大厦 8层",
+      "method": "中通快递",
+      "tracking_no": "ZTO9988776655"
+    },
+    "status": "已发货",
+    "payment_method": "支付宝",
+    "total": 2498.0,
+    "created_at": "2026-07-25 11:00:00",
+    "updated_at": "2026-07-25 16:30:00",
+    "timeline": [
+      {
+        "time": "2026-07-25 11:00",
+        "event": "订单创建"
+      },
+      {
+        "time": "2026-07-25 11:02",
+        "event": "支付成功"
+      },
+      {
+        "time": "2026-07-25 13:00",
+        "event": "仓库拣货"
+      },
+      {
+        "time": "2026-07-25 16:30",
+        "event": "已发货"
+      }
+    ]
+  },
+  {
+    "order_id": "ORD-20260726-015",
+    "customer": {
+      "name": "何伟",
+      "phone": "152-2222-4222",
+      "email": "hewei@qq.com"
+    },
+    "items": [
+      {
+        "name": "牧高笛露营帐篷",
+        "sku": "MGQ-TENT-02",
+        "quantity": 1,
+        "price": 1299.0
+      },
+      {
+        "name": "牧高笛充气床垫",
+        "sku": "MGQ-MAT-01",
+        "quantity": 1,
+        "price": 359.0
+      },
+      {
+        "name": "牧高笛露营灯",
+        "sku": "MGQ-LAMP-01",
+        "quantity": 2,
+        "price": 89.0
+      }
+    ],
+    "shipping": {
+      "address": "合肥市蜀山区潜山路888号百利中心 2号楼 1102",
+      "method": "德邦快递",
+      "tracking_no": "DB2233445566"
+    },
+    "status": "处理中",
+    "payment_method": "微信支付",
+    "total": 1836.0,
+    "created_at": "2026-07-26 19:26:00",
+    "updated_at": "2026-07-26 20:10:00",
+    "timeline": [
+      {
+        "time": "2026-07-26 19:26",
+        "event": "订单创建"
+      },
+      {
+        "time": "2026-07-26 19:28",
+        "event": "支付成功"
+      },
+      {
+        "time": "2026-07-26 20:10",
+        "event": "仓库拣货"
+      }
+    ]
+  },
+  {
+    "order_id": "ORD-20260727-012",
+    "customer": {
+      "name": "高翔",
+      "phone": "153-3333-5333",
+      "email": "gaoxiang@example.com"
+    },
+    "items": [
+      {
+        "name": "三星 Galaxy S25 Ultra 512G",
+        "sku": "SAMS-S25U-512",
+        "quantity": 1,
+        "price": 10199.0
+      },
+      {
+        "name": "三星 45W 快充头",
+        "sku": "SAMS-45W",
+        "quantity": 1,
+        "price": 199.0
+      }
+    ],
+    "shipping": {
+      "address": "福州市台江区江滨中大道378号升龙汇金中心 12层",
+      "method": "顺丰速运",
+      "tracking_no": "SF2233445566"
+    },
+    "status": "处理中",
+    "payment_method": "花呗",
+    "total": 10398.0,
+    "created_at": "2026-07-27 12:45:00",
+    "updated_at": "2026-07-27 14:00:00",
+    "timeline": [
+      {
+        "time": "2026-07-27 12:45",
+        "event": "订单创建"
+      },
+      {
+        "time": "2026-07-27 12:48",
+        "event": "支付成功"
+      },
+      {
+        "time": "2026-07-27 14:00",
+        "event": "仓库拣货"
+      }
+    ]
+  },
+  {
+    "order_id": "ORD-20260728-017",
+    "customer": {
+      "name": "罗琳",
+      "phone": "155-4444-6444",
+      "email": "luolin@163.com"
+    },
+    "items": [
+      {
+        "name": "美的电饭煲 4L",
+        "sku": "MID-RC-4L",
+        "quantity": 1,
+        "price": 399.0
+      },
+      {
+        "name": "九阳破壁机 Y1",
+        "sku": "JY-Y1",
+        "quantity": 1,
+        "price": 1099.0
+      }
+    ],
+    "shipping": {
+      "address": "昆明市五华区东风西路123号三合商利大厦 6层",
+      "method": "京东物流",
+      "tracking_no": "JD6677889900"
+    },
+    "status": "处理中",
+    "payment_method": "银联",
+    "total": 1498.0,
+    "created_at": "2026-07-28 09:08:00",
+    "updated_at": "2026-07-28 10:00:00",
+    "timeline": [
+      {
+        "time": "2026-07-28 09:08",
+        "event": "订单创建"
+      },
+      {
+        "time": "2026-07-28 09:10",
+        "event": "支付成功"
+      },
+      {
+        "time": "2026-07-28 10:00",
+        "event": "仓库拣货"
+      }
+    ]
+  },
+  {
+    "order_id": "ORD-20260729-010",
+    "customer": {
+      "name": "郑爽",
+      "phone": "156-5555-7555",
+      "email": "zhengshuang@gmail.com"
+    },
+    "items": [
+      {
+        "name": "雅诗兰黛小棕瓶精华 100ml",
+        "sku": "EL-ESS-100",
+        "quantity": 1,
+        "price": 1390.0
+      },
+      {
+        "name": "雅诗兰黛多效智妍眼霜",
+        "sku": "EL-EYE-15",
+        "quantity": 1,
+        "price": 720.0
+      }
+    ],
+    "shipping": {
+      "address": "沈阳市和平区青年大街288号华润万象城 3层",
+      "method": "顺丰速运",
+      "tracking_no": "SF4455667788"
+    },
+    "status": "处理中",
+    "payment_method": "信用卡",
+    "total": 2110.0,
+    "created_at": "2026-07-29 17:32:00",
+    "updated_at": "2026-07-29 18:00:00",
+    "timeline": [
+      {
+        "time": "2026-07-29 17:32",
+        "event": "订单创建"
+      },
+      {
+        "time": "2026-07-29 17:35",
+        "event": "支付成功"
+      },
+      {
+        "time": "2026-07-29 18:00",
+        "event": "仓库拣货"
+      }
+    ]
+  },
+  {
+    "order_id": "ORD-20260731-020",
+    "customer": {
+      "name": "梁雪",
+      "phone": "157-6666-8666",
+      "email": "liangxue@example.com"
+    },
+    "items": [
+      {
+        "name": "优衣库轻型羽绒服",
+        "sku": "UNI-DOWN-01",
+        "quantity": 2,
+        "price": 599.0
+      },
+      {
+        "name": "优衣库美利奴针织衫",
+        "sku": "UNI-KNIT-01",
+        "quantity": 1,
+        "price": 299.0
+      }
+    ],
+    "shipping": {
+      "address": "哈尔滨市南岗区西大直街118号哈工大科技园 3层",
+      "method": "中通快递",
+      "tracking_no": "ZTO4455667788"
+    },
+    "status": "待发货",
+    "payment_method": "微信支付",
+    "total": 1497.0,
+    "created_at": "2026-07-31 14:10:00",
+    "updated_at": "2026-07-31 16:30:00",
+    "timeline": [
+      {
+        "time": "2026-07-31 14:10",
+        "event": "订单创建"
+      },
+      {
+        "time": "2026-07-31 14:12",
+        "event": "支付成功"
+      },
+      {
+        "time": "2026-07-31 15:30",
+        "event": "仓库拣货"
+      },
+      {
+        "time": "2026-07-31 16:30",
+        "event": "待发货"
+      }
+    ]
+  },
+  {
+    "order_id": "ORD-20260802-002",
+    "customer": {
+      "name": "谢宇",
+      "phone": "158-7777-9777",
+      "email": "xieyu@qq.com"
+    },
+    "items": [
+      {
+        "name": "罗技 G913 无线机械键盘",
+        "sku": "LOGI-G913",
+        "quantity": 1,
+        "price": 1499.0
+      },
+      {
+        "name": "罗技 G502 X 鼠标",
+        "sku": "LOGI-G502X",
+        "quantity": 1,
+        "price": 499.0
+      },
+      {
+        "name": "NB 显示器支架",
+        "sku": "NB-MON-01",
+        "quantity": 1,
+        "price": 199.0
+      }
+    ],
+    "shipping": {
+      "address": "天津市南开区南门外大街2号大悦城写字楼 B座 1906",
+      "method": "京东物流",
+      "tracking_no": "JD3344556677"
+    },
+    "status": "已发货",
+    "payment_method": "支付宝",
+    "total": 2197.0,
+    "created_at": "2026-08-02 10:40:00",
+    "updated_at": "2026-08-03 08:20:00",
+    "timeline": [
+      {
+        "time": "2026-08-02 10:40",
+        "event": "订单创建"
+      },
+      {
+        "time": "2026-08-02 10:42",
+        "event": "支付成功"
+      },
+      {
+        "time": "2026-08-02 13:00",
+        "event": "仓库拣货"
+      },
+      {
+        "time": "2026-08-03 08:20",
+        "event": "已发货"
+      }
+    ]
+  },
+  {
+    "order_id": "ORD-20260802-018",
+    "customer": {
+      "name": "韩梅",
+      "phone": "159-8888-1888",
+      "email": "hanmei@163.com"
+    },
+    "items": [
+      {
+        "name": "乐高积木套装 10335",
+        "sku": "LEGO-10335",
+        "quantity": 1,
+        "price": 2099.0
+      },
+      {
+        "name": "儿童绘本礼盒",
+        "sku": "BOOK-KID-01",
+        "quantity": 1,
+        "price": 199.0
+      }
+    ],
+    "shipping": {
+      "address": "大连市中山区人民路68号大连国际金融大厦 18层",
+      "method": "圆通速递",
+      "tracking_no": "YT9988776655"
+    },
+    "status": "待付款",
+    "payment_method": "——",
+    "total": 2298.0,
+    "created_at": "2026-08-02 20:18:00",
+    "updated_at": "2026-08-02 20:18:00",
+    "timeline": [
+      {
+        "time": "2026-08-02 20:18",
+        "event": "订单创建"
+      },
+      {
+        "time": "2026-08-02 20:18",
+        "event": "等待付款"
+      }
+    ]
+  },
+  {
+    "order_id": "ORD-20260803-007",
+    "customer": {
+      "name": "唐磊",
+      "phone": "188-0000-3000",
+      "email": "tanglei@example.com"
+    },
+    "items": [
+      {
+        "name": "云南精品咖啡豆 1kg",
+        "sku": "COFF-01-1K",
+        "quantity": 2,
+        "price": 168.0
+      },
+      {
+        "name": "手冲壶 600ml",
+        "sku": "COFF-KETTLE",
+        "quantity": 1,
+        "price": 329.0
+      },
+      {
+        "name": "咖啡滤杯套装",
+        "sku": "COFF-V60",
+        "quantity": 1,
+        "price": 199.0
+      }
+    ],
+    "shipping": {
+      "address": "宁波市鄞州区宁穿路1888号银泰城 12层",
+      "method": "顺丰速运",
+      "tracking_no": "SF9911002233"
+    },
+    "status": "待付款",
+    "payment_method": "——",
+    "total": 864.0,
+    "created_at": "2026-08-03 08:56:00",
+    "updated_at": "2026-08-03 08:56:00",
+    "timeline": [
+      {
+        "time": "2026-08-03 08:56",
+        "event": "订单创建"
+      },
+      {
+        "time": "2026-08-03 08:56",
+        "event": "等待付款"
+      }
+    ]
+  },
+  {
+    "order_id": "ORD-20260803-011",
+    "customer": {
+      "name": "冯晨",
+      "phone": "186-1111-4111",
+      "email": "fengchen@qq.com"
+    },
+    "items": [
+      {
+        "name": "探路者登山包 45L",
+        "sku": "TZL-BAG45",
+        "quantity": 1,
+        "price": 699.0
+      },
+      {
+        "name": "膳魔师保温杯 500ml",
+        "sku": "ZOJ-WB500",
+        "quantity": 2,
+        "price": 259.0
+      },
+      {
+        "name": "运动水壶",
+        "sku": "SPT-BTL-01",
+        "quantity": 1,
+        "price": 59.0
+      }
+    ],
+    "shipping": {
+      "address": "无锡市梁溪区中山路168号八佰伴中心 20层",
+      "method": "中通快递",
+      "tracking_no": "ZTO2233445566"
+    },
+    "status": "处理中",
+    "payment_method": "货到付款",
+    "total": 1276.0,
+    "created_at": "2026-08-03 13:22:00",
+    "updated_at": "2026-08-03 15:00:00",
+    "timeline": [
+      {
+        "time": "2026-08-03 13:22",
+        "event": "订单创建"
+      },
+      {
+        "time": "2026-08-03 15:00",
+        "event": "仓库拣货"
+      }
+    ]
+  },
+  {
+    "order_id": "ORD-20260804-005",
+    "customer": {
+      "name": "董洁",
+      "phone": "187-2222-5222",
+      "email": "dongjie@163.com"
+    },
+    "items": [
+      {
+        "name": "添可芙万洗地机 H20 Pro",
+        "sku": "TIN-H20P",
+        "quantity": 1,
+        "price": 2990.0
+      },
+      {
+        "name": "添可清洁液补充装",
+        "sku": "TIN-CLEAN-01",
+        "quantity": 2,
+        "price": 59.0
+      }
+    ],
+    "shipping": {
+      "address": "佛山市南海区桂澜北路26号千灯湖环宇城 3座 1101",
+      "method": "京东物流",
+      "tracking_no": "JD1122334466"
+    },
+    "status": "待付款",
+    "payment_method": "——",
+    "total": 3108.0,
+    "created_at": "2026-08-04 11:35:00",
+    "updated_at": "2026-08-04 11:35:00",
+    "timeline": [
+      {
+        "time": "2026-08-04 11:35",
+        "event": "订单创建"
+      },
+      {
+        "time": "2026-08-04 11:35",
+        "event": "等待付款"
+      }
+    ]
+  },
+  {
+    "order_id": "ORD-20260805-001",
+    "customer": {
+      "name": "曹磊",
+      "phone": "188-3333-6333",
+      "email": "caolei@example.com"
+    },
+    "items": [
+      {
+        "name": "戴尔 UltraSharp 27 4K 显示器 U2724D",
+        "sku": "DELL-U2724D",
+        "quantity": 1,
+        "price": 4599.0
+      },
+      {
+        "name": "戴尔显示器清洁套装",
+        "sku": "DELL-CLEAN-01",
+        "quantity": 1,
+        "price": 69.0
+      }
+    ],
+    "shipping": {
+      "address": "石家庄市长安区中山东路39号勒泰中心 写字楼 B座 2101",
+      "method": "德邦快递",
+      "tracking_no": "DB9988776655"
+    },
+    "status": "已取消",
+    "payment_method": "企业转账",
+    "total": 4668.0,
+    "created_at": "2026-08-05 09:14:00",
+    "updated_at": "2026-08-05 11:02:00",
+    "timeline": [
+      {
+        "time": "2026-08-05 09:14",
+        "event": "订单创建"
+      },
+      {
+        "time": "2026-08-05 09:16",
+        "event": "支付成功"
+      },
+      {
+        "time": "2026-08-05 11:02",
+        "event": "取消订单"
+      }
+    ]
+  },
+  {
+    "order_id": "ORD-20260805-013",
+    "customer": {
+      "name": "袁媛",
+      "phone": "189-4444-7444",
+      "email": "yuanyuan@qq.com"
+    },
+    "items": [
+      {
+        "name": "宠物自动喂食器",
+        "sku": "PET-FEEDER-01",
+        "quantity": 1,
+        "price": 599.0
+      },
+      {
+        "name": "进口猫粮 2kg",
+        "sku": "PET-CATFOOD",
+        "quantity": 3,
+        "price": 189.0
+      }
+    ],
+    "shipping": {
+      "address": "南昌市红谷滩区丰和中大道998号绿地中心双子塔 A座 1703",
+      "method": "韵达快递",
+      "tracking_no": "YD2233445566"
+    },
+    "status": "已取消",
+    "payment_method": "微信支付",
+    "total": 1166.0,
+    "created_at": "2026-08-05 15:47:00",
+    "updated_at": "2026-08-05 16:20:00",
+    "timeline": [
+      {
+        "time": "2026-08-05 15:47",
+        "event": "订单创建"
+      },
+      {
+        "time": "2026-08-05 15:49",
+        "event": "支付成功"
+      },
+      {
+        "time": "2026-08-05 16:20",
+        "event": "取消订单"
+      }
+    ]
+  },
+  {
+    "order_id": "ORD-20260805-009",
+    "customer": {
+      "name": "许晴",
+      "phone": "166-5555-8555",
+      "email": "xuqing@163.com"
+    },
+    "items": [
+      {
+        "name": "华为智能门锁 Pro",
+        "sku": "HW-LOCK-PRO",
+        "quantity": 1,
+        "price": 1999.0
+      },
+      {
+        "name": "华为智能门锁安装服务",
+        "sku": "HW-LOCK-INST",
+        "quantity": 1,
+        "price": 200.0
+      }
+    ],
+    "shipping": {
+      "address": "兰州市城关区庆阳路488号国贸大厦 15层",
+      "method": "顺丰速运",
+      "tracking_no": "SF7788990011"
+    },
+    "status": "退款中",
+    "payment_method": "支付宝",
+    "total": 2199.0,
+    "created_at": "2026-08-05 18:10:00",
+    "updated_at": "2026-08-06 09:30:00",
+    "timeline": [
+      {
+        "time": "2026-08-05 18:10",
+        "event": "订单创建"
+      },
+      {
+        "time": "2026-08-05 18:12",
+        "event": "支付成功"
+      },
+      {
+        "time": "2026-08-05 20:00",
+        "event": "仓库拣货"
+      },
+      {
+        "time": "2026-08-06 09:00",
+        "event": "退款申请"
+      },
+      {
+        "time": "2026-08-06 09:30",
+        "event": "退款中"
+      }
+    ]
+  },
+  {
+    "order_id": "ORD-20260806-004",
+    "customer": {
+      "name": "邓超",
+      "phone": "177-6666-9666",
+      "email": "dengchao@gmail.com"
+    },
+    "items": [
+      {
+        "name": "小米平板 7 Pro 512G",
+        "sku": "MI-PAD7P-512",
+        "quantity": 1,
+        "price": 3599.0
+      },
+      {
+        "name": "小米键盘式双面保护壳",
+        "sku": "MI-KBD-01",
+        "quantity": 1,
+        "price": 799.0
+      }
+    ],
+    "shipping": {
+      "address": "贵阳市观山湖区长岭北路1号金融城 MAX·A座 19层",
+      "method": "顺丰速运",
+      "tracking_no": "SF8899001122"
+    },
+    "status": "退款中",
+    "payment_method": "信用卡",
+    "total": 4398.0,
+    "created_at": "2026-08-06 10:05:00",
+    "updated_at": "2026-08-06 12:00:00",
+    "timeline": [
+      {
+        "time": "2026-08-06 10:05",
+        "event": "订单创建"
+      },
+      {
+        "time": "2026-08-06 10:08",
+        "event": "支付成功"
+      },
+      {
+        "time": "2026-08-06 11:30",
+        "event": "退款申请"
+      },
+      {
+        "time": "2026-08-06 12:00",
+        "event": "退款中"
+      }
     ]
   }
 ]
