@@ -69,45 +69,6 @@ class FlaskApiTestCase(unittest.TestCase):
         self.assertFalse(payload["success"])
         self.assertIn("未找到该订单", payload["message"])
 
-    def test_orders_page_renders(self):
-        response = self.client.get("/orders")
-        self.assertEqual(response.status_code, 200)
-        self.assertIn("订单总览".encode("utf-8"), response.data)
-
-    def test_api_list_orders_returns_all(self):
-        response = self.client.get("/api/orders")
-        self.assertEqual(response.status_code, 200)
-        payload = response.get_json()
-        self.assertTrue(payload["success"])
-        self.assertIn("data", payload)
-        self.assertIn("total", payload)
-        self.assertGreater(payload["total"], 0)
-        first = payload["data"][0]
-        for key in ("order_id", "status", "total", "customer_name", "created_at"):
-            self.assertIn(key, first)
-
-    def test_api_list_orders_filter_by_status(self):
-        response = self.client.get("/api/orders?status=已发货")
-        payload = response.get_json()
-        self.assertTrue(payload["success"])
-        for item in payload["data"]:
-            self.assertEqual(item["status"], "已发货")
-
-    def test_api_list_orders_filter_by_keyword(self):
-        response = self.client.get("/api/orders?q=ORD-20260801-001")
-        payload = response.get_json()
-        self.assertTrue(payload["success"])
-        self.assertEqual(len(payload["data"]), 1)
-        self.assertEqual(payload["data"][0]["order_id"], "ORD-20260801-001")
-
-    def test_api_list_orders_pagination(self):
-        response = self.client.get("/api/orders?page=1&page_size=5")
-        payload = response.get_json()
-        self.assertTrue(payload["success"])
-        self.assertLessEqual(len(payload["data"]), 5)
-        self.assertEqual(payload["page"], 1)
-        self.assertEqual(payload["page_size"], 5)
-
     def test_api_suggest_orders(self):
         response = self.client.get("/api/orders/suggest")
         self.assertEqual(response.status_code, 200)

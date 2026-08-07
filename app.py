@@ -36,48 +36,12 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/orders")
-def orders_page():
-    return render_template("orders.html")
-
-
 @app.route("/api/order/<order_id>")
 def api_get_order(order_id):
     order = find_order(order_id)
     if order is None:
         return jsonify({"success": False, "message": "未找到该订单"}), 404
     return jsonify({"success": True, "data": order})
-
-
-@app.route("/api/orders")
-def api_list_orders():
-    orders = load_orders()
-    status_filter = (request.args.get("status") or "").strip()
-    keyword = (request.args.get("q") or "").strip().lower()
-    if status_filter:
-        orders = [o for o in orders if o.get("status") == status_filter]
-    if keyword:
-        orders = [
-            o for o in orders
-            if keyword in o.get("order_id", "").lower()
-            or keyword in o.get("customer", {}).get("name", "").lower()
-        ]
-    page = max(int(request.args.get("page", 1)), 1)
-    page_size = max(min(int(request.args.get("page_size", 20)), 100), 1)
-    total = len(orders)
-    start = (page - 1) * page_size
-    page_data = orders[start: start + page_size]
-    result = [
-        {
-            "order_id": o["order_id"],
-            "status": o["status"],
-            "total": o["total"],
-            "customer_name": o.get("customer", {}).get("name", ""),
-            "created_at": o.get("created_at", ""),
-        }
-        for o in page_data
-    ]
-    return jsonify({"success": True, "data": result, "total": total, "page": page, "page_size": page_size})
 
 
 @app.route("/api/orders/suggest")

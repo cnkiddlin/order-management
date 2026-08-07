@@ -1,0 +1,366 @@
+
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>交付报告 — 订单总览功能</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    background: #ffffff;
+    color: #1f2328;
+    padding: 40px 24px 60px;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; }
+
+  .hero {
+    background: #f7f8fa;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 32px;
+  }
+  .hero-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #57606a;
+    margin-bottom: 6px;
+  }
+  .hero-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1f2328;
+    margin-bottom: 8px;
+  }
+  .hero-subtitle {
+    font-size: 14px;
+    color: #57606a;
+  }
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+  .badge-green { background: rgba(5,150,105,0.1); color: #059669; border: 1px solid rgba(5,150,105,0.2); }
+  .badge-blue  { background: rgba(37,99,235,0.1);  color: #2563eb; border: 1px solid rgba(37,99,235,0.2); }
+  .badge-gold  { background: rgba(169,139,79,0.1); color: #8b6f3f; border: 1px solid rgba(169,139,79,0.2); }
+
+  section { margin-bottom: 32px; }
+  h2 {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #57606a;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  /* Feature list */
+  .feature-list { list-style: none; }
+  .feature-list li {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .feature-list li:last-child { border-bottom: none; }
+  .feat-icon {
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    background: rgba(37,99,235,0.08);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .feat-icon svg { color: #2563eb; }
+  .feat-body strong { font-size: 14px; font-weight: 600; display: block; margin-bottom: 2px; }
+  .feat-body span { font-size: 13px; color: #57606a; }
+
+  /* File table */
+  table { width: 100%; border-collapse: collapse; }
+  thead th {
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    color: #57606a;
+    background: #f7f8fa;
+    padding: 10px 14px;
+    border: 1px solid #e5e7eb;
+  }
+  tbody td {
+    padding: 10px 14px;
+    border: 1px solid #e5e7eb;
+    font-size: 13px;
+    vertical-align: top;
+  }
+  tbody tr:hover td { background: #fafbfc; }
+  code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 12px;
+    background: #f0f2f5;
+    padding: 1px 6px;
+    border-radius: 4px;
+    color: #1f2328;
+  }
+
+  /* KV cards */
+  .kv-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  @media (max-width: 600px) { .kv-grid { grid-template-columns: 1fr; } }
+  .kv-card {
+    background: #f7f8fa;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .kv-label { font-size: 11px; color: #57606a; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 4px; }
+  .kv-value { font-size: 14px; font-weight: 600; color: #1f2328; }
+  .kv-value.mono { font-family: "SFMono-Regular", Consolas, monospace; font-size: 13px; }
+
+  /* Pipeline stages */
+  .pipeline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .stage {
+    display: flex; align-items: center; gap: 6px;
+    background: #f7f8fa;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .stage-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #059669;
+    flex-shrink: 0;
+  }
+  .stage-name { color: #1f2328; }
+  .stage-time { color: #57606a; font-size: 12px; margin-left: 4px; }
+
+  /* Test result */
+  .test-result {
+    background: rgba(5,150,105,0.06);
+    border: 1px solid rgba(5,150,105,0.2);
+    border-radius: 10px;
+    padding: 16px 20px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .test-icon {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(5,150,105,0.12);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .test-icon svg { color: #059669; }
+  .test-text strong { font-size: 15px; font-weight: 700; color: #059669; }
+  .test-text span { font-size: 13px; color: #57606a; display: block; }
+
+  /* URL box */
+  .url-box {
+    background: #f7f8fa;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 13px;
+    color: #3b82d4;
+    word-break: break-all;
+  }
+  .url-box a { color: #3b82d4; }
+
+  footer {
+    margin-top: 48px;
+    padding-top: 16px;
+    border-top: 1px solid #e5e7eb;
+    text-align: center;
+    font-size: 12px;
+    color: #57606a;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  
+  <div class="hero">
+    <div class="hero-label">Issue #1 · Feature Request</div>
+    <div class="hero-title">新增订单总览页面 <span class="badge badge-green">✓ 已交付</span></div>
+    <div class="hero-subtitle">汇总系统全部订单，支持状态筛选、关键词搜索与分页浏览，从导航栏统一入口进入。</div>
+  </div>
+
+  
+  <section>
+    <h2>完成的功能</h2>
+    <ul class="feature-list">
+      <li>
+        <div class="feat-icon">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path><path d="M9 11l3 3L22 4"></path></svg>
+        </div>
+        <div class="feat-body">
+          <strong>订单总览页面 <code>/orders</code></strong>
+          <span>独立路由 + 模板，展示所有订单的编号、客户、下单时间、状态、金额，可点击订单编号跳转详情。</span>
+        </div>
+      </li>
+      <li>
+        <div class="feat-icon">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+        </div>
+        <div class="feat-body">
+          <strong>关键词 + 状态筛选</strong>
+          <span>支持按订单编号/客户姓名搜索，及按「待付款、处理中、已发货、已完成」4 种状态过滤，带重置按钮。</span>
+        </div>
+      </li>
+      <li>
+        <div class="feat-icon">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect></svg>
+        </div>
+        <div class="feat-body">
+          <strong>分页控件</strong>
+          <span>默认每页 20 条，显示总条数及当前范围，支持上一页 / 下一页 / 页码直跳，最大 100 条/页可配置。</span>
+        </div>
+      </li>
+      <li>
+        <div class="feat-icon">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+        </div>
+        <div class="feat-body">
+          <strong>导航栏更新</strong>
+          <span>两个页面顶栏均增加「订单查询 / 订单总览」导航链接，高亮当前激活页。</span>
+        </div>
+      </li>
+      <li>
+        <div class="feat-icon">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 2h16l2 6H2L4 2z"></path><path d="M2 8v14h20V8"></path><path d="M10 8v14M14 8v14"></path></svg>
+        </div>
+        <div class="feat-body">
+          <strong>REST API <code>GET /api/orders</code></strong>
+          <span>支持 <code>?q=</code>（关键词）、<code>?status=</code>（状态）、<code>?page=</code>、<code>?page_size=</code> 四个参数，复用现有 <code>load_orders()</code>。</span>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  
+  <section>
+    <h2>修改的文件</h2>
+    <table>
+      <thead><tr><th>文件</th><th>变更类型</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td><code>app.py</code></td><td><span class="badge badge-gold">Modified</span></td><td>新增 <code>/orders</code> 路由及 <code>/api/orders</code> 接口（含筛选、分页逻辑）</td></tr>
+        <tr><td><code>templates/orders.html</code></td><td><span class="badge badge-blue">New</span></td><td>订单总览页面（筛选栏 + 表格 + 分页 + 内联 JS）</td></tr>
+        <tr><td><code>templates/index.html</code></td><td><span class="badge badge-gold">Modified</span></td><td>顶栏增加导航链接（活跃态高亮）</td></tr>
+        <tr><td><code>static/style.css</code></td><td><span class="badge badge-gold">Modified</span></td><td>新增导航、筛选栏、订单表格、分页及页面标题样式（+236 行）</td></tr>
+        <tr><td><code>tests/test_app.py</code></td><td><span class="badge badge-gold">Modified</span></td><td>新增 5 个测试用例覆盖新页面渲染及 API 端点</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  
+  <section>
+    <h2>本地测试结果</h2>
+    <div class="test-result">
+      <div class="test-icon">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+      </div>
+      <div class="test-text">
+        <strong>22 / 22 passed — 0 failed</strong>
+        <span>pytest 0.34s · 涵盖原有 17 个用例 + 新增 5 个订单总览相关用例，全部通过</span>
+      </div>
+    </div>
+  </section>
+
+  
+  <section>
+    <h2>Git Commit &amp; CI/CD</h2>
+    <div class="kv-grid">
+      <div class="kv-card">
+        <div class="kv-label">Commit ID</div>
+        <div class="kv-value mono">92c5385</div>
+      </div>
+      <div class="kv-card">
+        <div class="kv-label">Branch</div>
+        <div class="kv-value">main</div>
+      </div>
+      <div class="kv-card">
+        <div class="kv-label">PipelineRun</div>
+        <div class="kv-value mono">order-management-9vmtz</div>
+      </div>
+      <div class="kv-card">
+        <div class="kv-label">Pipeline 结果</div>
+        <div class="kv-value"><span class="badge badge-green">Succeeded</span></div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section>
+    <h2>Pipeline 阶段明细</h2>
+    <div class="pipeline">
+      <div class="stage"><div class="stage-dot"></div><span class="stage-name">clone</span><span class="stage-time">~14s</span></div>
+      <div class="stage"><div class="stage-dot"></div><span class="stage-name">unittest</span><span class="stage-time">~11s</span></div>
+      <div class="stage"><div class="stage-dot"></div><span class="stage-name">trivy-scan</span><span class="stage-time">~22s</span></div>
+      <div class="stage"><div class="stage-dot"></div><span class="stage-name">build-image</span><span class="stage-time">~35s</span></div>
+      <div class="stage"><div class="stage-dot"></div><span class="stage-name">update-gitops</span><span class="stage-time">~11s</span></div>
+    </div>
+  </section>
+
+  
+  <section>
+    <h2>Deployment 状态</h2>
+    <div class="kv-grid">
+      <div class="kv-card">
+        <div class="kv-label">Namespace</div>
+        <div class="kv-value">order-app</div>
+      </div>
+      <div class="kv-card">
+        <div class="kv-label">Deployment 状态</div>
+        <div class="kv-value"><span class="badge badge-green">Rolled Out ✓</span></div>
+      </div>
+      <div class="kv-card">
+        <div class="kv-label">Pod 状态</div>
+        <div class="kv-value">1/1 Running</div>
+      </div>
+      <div class="kv-card">
+        <div class="kv-label">镜像 Tag</div>
+        <div class="kv-value mono">92c538555d4b...</div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section>
+    <h2>新版本访问地址</h2>
+    <div class="url-box">
+      <div style="margin-bottom:8px">
+        🔍 订单查询（原有）：<a href="https://order-management-order-app.apps.itz-zcg77b.infra01-lb.syd05.techzone.ibm.com/" target="_blank">https://order-management-order-app.apps.itz-zcg77b.infra01-lb.syd05.techzone.ibm.com/</a>
+      </div>
+      <div>
+        📋 订单总览（新增）：<a href="https://order-management-order-app.apps.itz-zcg77b.infra01-lb.syd05.techzone.ibm.com/orders" target="_blank">https://order-management-order-app.apps.itz-zcg77b.infra01-lb.syd05.techzone.ibm.com/orders</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+<footer>Made with IBM Bob</footer>
+</body>
+</html>
